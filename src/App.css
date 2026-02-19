@@ -1,0 +1,285 @@
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* START SCREEN */
+.start-screen {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(45deg, #f6d365, #fda085);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.start-screen h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.start-screen p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.start-screen button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background: white;
+  color: #f06d06;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.start-screen button:hover {
+  transform: scale(1.1);
+}
+
+/* HUD */
+.hud {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 22px;
+  z-index: 10;
+}
+
+/* Room size display */
+.room-size {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.chocolate-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-wrap: wrap; /* allow multiple rows */
+  width: 120px;    /* 3 pieces per row */
+  gap: 5px;
+  z-index: 10;
+}
+
+.chocolate-bar img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+}
+
+.chocolate-bar img.collected {
+  transform: scale(1.2);
+}
+
+.chocolate-bar img.empty {
+  opacity: 0.3;
+}
+
+.joystick-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.eat-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: yellow;
+  font-weight: bold;
+}
+
+/* Left joystick */
+.joystick-left {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  z-index: 20;
+}
+
+/* Right joystick */
+.joystick-right {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  z-index: 20;
+}
+
+/* Up/Down buttons */
+.vertical-controls {
+  position: absolute;
+  bottom: 200px;
+  bottom: 80px; /* slightly above bottom */
+  right:25%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 20;
+}
+
+.vertical-controls button {
+  width: 100%; /* bigger buttons */
+  height: 50px; /* taller buttons */
+  font-size: 18px;
+  border-radius: 12px;
+  background-color: #ffb74d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.eat-chocolate-2d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f1e5; /* light warm background */
+  font-family: sans-serif;
+}
+
+.full-chocolate-bar {
+  display: flex;
+  gap: 5px;
+  margin: 20px 0;
+}
+
+.full-chocolate-bar img {
+  width: 80px;
+  height: 80px;
+}
+
+.eat-chocolate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);  /* strong blur */
+  background: rgba(0, 0, 0, 0.2); /* semi-transparent dark tint */
+  z-index: 90;                  /* behind button but above 3D canvas */
+}
+
+.eat-chocolate-button-2d {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eat-chocolate-button-2d button {
+  background-color: #8b4513; /* chocolate brown */
+  color: #fff;
+  padding: 20px 40px;
+  font-size: 24px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.eat-chocolate-button-2d button:hover {
+  background-color: #a0522d; /* slightly lighter brown */
+  transform: scale(1.05);
+}
+
+.chocolate-bar-ui {
+  position: fixed;      /* stays on top of Canvas */
+  bottom: 20px;         /* distance from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;        /* above Canvas */
+  pointer-events: none; /* clicks pass through */
+}
+
+.chocolate-bar-title {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0 0 10px #000;
+  margin-bottom: 5px;
+}
+
+.chocolate-bar-instruction {
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+
+.chocolate-bar-happy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(15px);       /* strong blur behind */
+  background: rgba(0, 0, 0, 0.2);    /* semi-transparent dark tint */
+  z-index: 90;                       /* behind text */
+}
+
+.chocolate-bar-happy-2d {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  font-size: 3.5rem;
+  color: #ffea00;
+  text-align: center;
+  text-shadow: 
+    0 0 10px #fff, 
+    0 0 20px #ff0, 
+    0 0 30px #f0f, 
+    0 0 40px #ff0;
+  pointer-events: none;
+  line-height: 1.2;
+
+  white-space: nowrap;   /* Prevent text from wrapping */
+  max-width: 90vw;       /* Optional: prevent overflow on small screens */
+}
+
+
+.chocolate-bar-button-bottom-right {
+  position: fixed;
+  bottom: 30px;        /* distance from bottom */
+  right: 30px;         /* distance from right */
+  z-index: 101;        /* above overlay but below any modal if needed */
+  background-color: #8b4513;  /* chocolate brown */
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.chocolate-bar-button-bottom-right:hover {
+  background-color: #a0522d; /* slightly lighter brown */
+  transform: scale(1.05);
+}
