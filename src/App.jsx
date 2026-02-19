@@ -289,7 +289,7 @@ export default function App() {
         {allEaten && (
           <>
             <div className="chocolate-bar-happy-overlay"></div>
-            <div className="chocolate-bar-happy-2d">🎉 Happy Chocolate Day!🍫</div>
+            <div className="chocolate-bar-happy-2d">🎉 You completed the game!🍫</div>
           </>
         )}
       </div>
